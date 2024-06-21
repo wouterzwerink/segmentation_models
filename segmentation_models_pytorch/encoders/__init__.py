@@ -53,8 +53,8 @@ def get_encoder(name, in_channels=3, depth=5, weights=None, output_stride=32, **
     if name.startswith("tu-"):
         name = name[3:]
 
-        if "encoder_indices" in kwargs and kwargs["encoder_indices"] is None:
-            kwargs["encoder_indices"] = "first"
+        if "out_indices" in kwargs and kwargs["out_indices"] is None:
+            kwargs["out_indices"] = "first"
 
         encoder = TimmUniversalEncoder(
             name=name,
@@ -66,10 +66,10 @@ def get_encoder(name, in_channels=3, depth=5, weights=None, output_stride=32, **
         )
         return encoder
 
-    encoder_indices = kwargs.pop("encoder_indices", None)
+    encoder_indices = kwargs.pop("out_indices", None)
     if encoder_indices is not None:
         logger.warning(
-            "Argument `encoder_indices` is supported only for `tu-` encoders (Timm) and will be ignored."
+            "Argument `out_indices` is supported only for `tu-` encoders (Timm) and will be ignored."
         )
 
     encoder_channels = kwargs.pop("encoder_channels", None)

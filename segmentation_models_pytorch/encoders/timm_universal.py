@@ -235,7 +235,7 @@ class TimmUniversalEncoder(nn.Module):
         in_channels: int = 3,
         depth: int = 5,
         output_stride: int = 32,
-        out_indices: Optional[List[int]] = None,
+        out_indices: Union[str, List[int]] = "first",
         out_channels: Optional[List[int]] = None,
     ):
         super().__init__()
